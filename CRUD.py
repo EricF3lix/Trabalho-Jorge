@@ -47,9 +47,9 @@ def read(dadosAlunos, dadosProfessor):
     
     
        
-    
 def update(dadosAlunos, dadosProfessor):
-     usuario = input("Informe se é ALUNO ou PROFESSOR: ").upper()
+    usuario = input("Informe se é ALUNO ou PROFESSOR: ").upper()
+    
     if usuario == "ALUNO":
         nome = input("Informe o nome do aluno que deseja atualizar: ").upper()
         if nome in dadosAlunos:

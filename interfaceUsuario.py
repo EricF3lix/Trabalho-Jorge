@@ -27,11 +27,11 @@ def menu(dadosAlunos, dadosProfessor):
             
                 
         elif escolha == 3:
-            CRUD.update()
+            CRUD.update(dadosAlunos, dadosProfessor)
                 
                 
         elif escolha == 4:
-            CRUD.delete()
+            CRUD.delete(dadosAlunos, dadosProfessor)
                 
         else:
             escolha = int (input("Entrada inválida. Tente novamente: "))
