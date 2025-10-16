@@ -49,6 +49,7 @@ def read(dadosAlunos, dadosProfessor):
        
 def update(dadosAlunos, dadosProfessor):
     usuario = input("Informe se é ALUNO ou PROFESSOR: ").upper()
+
     
     if usuario == "ALUNO":
         nome = input("Informe o nome do aluno que deseja atualizar: ").upper()
@@ -57,7 +58,7 @@ def update(dadosAlunos, dadosProfessor):
             print(f"Nome: {nome}")
             for chave, valor in dadosAlunos[nome].items():
                 print(f"{chave}: {valor}")
-            campo = input("Qual campo você deseja atualizar? ").upper()
+            campo = input("Qual campo você deseja atualizar? ").lower()
             if campo in dadosAlunos[nome]:  
                 novo_valor = input(f"Informe o novo valor para {campo}: ")
                 dadosAlunos[nome][campo] = novo_valor  
