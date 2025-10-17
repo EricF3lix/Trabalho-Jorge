@@ -15,6 +15,7 @@ def menu(dadosAlunos, dadosProfessor):
         print("5 - Ver todos os produtos fornecidos pela F3 Fitness")
         print("0 - Fechar programa")
         escolha = int(input("Escolha o que você deseja fazer: "))
+        print("\n")
            
         if escolha == 0:
             print("Programa encerrado")

@@ -2,13 +2,13 @@ LOG_FILE = 'dadosAcademiaAluno.txt'
 LOG2_FILE = 'dadosAcademiaProfessor.txt'
 
 def salvarAlunoNoArquivo(dadosAlunos):
-    with open(LOG_FILE, 'a') as arquivo:
+    with open(LOG_FILE, 'w') as arquivo:
         for nome, info in dadosAlunos.items():
             linha = f"aluno: {nome} | " + " | ".join([f"{chave}: {valor}" for chave, valor in info.items()])      
             arquivo.write(linha + "\n") 
 
 def salvarProfessorNoArquivo(dadosProfessor):
-     with open(LOG2_FILE, 'a') as arquivo2:
+     with open(LOG2_FILE, 'w') as arquivo2:
         for nome, info in dadosProfessor.items():
             linha = f"professor: {nome} | " + " | ".join([f"{chave}: {valor}" for chave, valor in info.items()]) 
             arquivo2.write(linha + "\n") 
@@ -33,7 +33,6 @@ def lerArquivoAluno(dadosAlunos):
                     else:
                         dadoAluno[chave] = valor 
 
-                if nomeAluno:
                     dadosAlunos[nomeAluno] = dadoAluno
 
     return dadosAlunos
@@ -59,7 +58,7 @@ def lerArquivoProfessor(dadosProfessor):
                     else:
                         dadosProf[chave] = valor 
 
-                if nomeProf:
+                
                     dadosProfessor[nomeProf] = dadosProf  
 
     return dadosProfessor

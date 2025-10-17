@@ -1,2 +1,5 @@
-
 aluno: ERIC | idade: 19 | peso: 62 | altura: 180 | sexo: MASCULINO | plano: MENSAL
+aluno: BRUNO | idade: 22 | peso: 75 | altura: 175 | sexo: MASCULINO | plano: ANUAL
+aluno: LARA | idade: 15 | peso: 65 | altura: 170 | sexo: FEMININO | plano: TRIMESTRAL
+aluno: VIVIANE | idade: 48 | peso: 80 | altura: 157 | sexo: FEMININO | plano: MENSAL
+aluno: JUNIOR | idade: 51 | peso: 80 | altura: 175 | sexo: MASCULINO | plano: SEMESTRAL
