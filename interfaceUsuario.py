@@ -1,4 +1,5 @@
 import CRUD 
+from logger import lerArquivoAluno, lerArquivoProfessor
 
 dadosAlunos = {}
 dadosProfessor = {} 
@@ -11,7 +12,7 @@ def menu(dadosAlunos, dadosProfessor):
         print("3 - Atualizar dados de Cadastro" )
         print("4 - Remover usuário do sistema")
         print("0 - Fechar programa")
-        escolha = int (input("Escolha o que vocÊ deseja fazer: "))
+        escolha = int(input("Escolha o que vocÊ deseja fazer: "))
            
         if escolha == 0:
             print("Programa encerrado")
@@ -36,7 +37,8 @@ def menu(dadosAlunos, dadosProfessor):
         else:
             escolha = int (input("Entrada inválida. Tente novamente: "))
     
-              
+dadosAlunos = lerArquivoAluno(dadosAlunos)
+dadosProfessor = lerArquivoProfessor(dadosProfessor)
 dadosAlunos, dadosProfessor = menu(dadosAlunos, dadosProfessor)   
 
 

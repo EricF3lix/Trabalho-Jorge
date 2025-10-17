@@ -74,7 +74,7 @@ def update(dadosAlunos, dadosProfessor):
             print(f"Nome: {nome}")
             for chave, valor in dadosProfessor[nome].items():
                 print(f"{chave}: {valor}")
-            campo = input("Qual campo você deseja atualizar? ").upper()
+            campo = input("Qual campo você deseja atualizar? ").lower()
             if campo in dadosProfessor[nome]:  
                 novo_valor = input(f"Informe o novo valor para {campo}: ")
                 dadosProfessor[nome][campo] = novo_valor  

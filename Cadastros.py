@@ -29,19 +29,19 @@ def menuProfessor(dadosProfessor):
     print("Vamos começar a cadastrar o Professor")
     nome = input("Informe o nome completo do professor: ").upper()
     cpf = int(input("Informe o CPF do professor (somente digitos): "))
-    areaAtuacao = input("Informe a área de atuação do professor (dança, boxe, funcional ou musculação): ").upper()
-    capacitacao = input("Informe a capacitação profissional do professor: (estagiário, formado, pós graduação, mestrado ou doutorado)").upper()
+    areaAtuacao = input("Informe a área de atuação do professor (danca, boxe, funcional ou musculacao): ").upper()
+    capacitacao = input("Informe a capacitação profissional do professor: (estagiario, formado, pos graduacao, mestrado ou doutorado)").upper()
     turnoTrabalho = input("Informe o turno que o professor irá trabalhar (manhã, tarde ou noite): ").upper()
     cargaHoraria = int(input("Informe a carga horária semanal do professor: "))
     salario = defineSalario(areaAtuacao, capacitacao, cargaHoraria)
     
     dadosProfessor[nome] = {
         "CPF" : cpf,
-        "Atuação" : areaAtuacao,
-        "Capacitação": capacitacao,
+        "Atuacao" : areaAtuacao,
+        "Capacitacao": capacitacao,
         "Turno de Trabalho": turnoTrabalho,
-        "Carga Horária" : cargaHoraria,
-        "Salário" : salario 
+        "Carga Horaria" : cargaHoraria,
+        "Salario" : salario 
     }
     print("Professor cadastrado com sucesso!\n")
     salvarProfessorNoArquivo(dadosProfessor)
@@ -50,8 +50,8 @@ def menuProfessor(dadosProfessor):
     
     
 def defineSalario(areaAtuacao, capacitacao, cargaHoraria):
-    if areaAtuacao in ("DANÇA", "BOXE"):
-        if(capacitacao == "ESTAGIÁRIO"):
+    if areaAtuacao in ("DANCA", "BOXE"):
+        if(capacitacao == "ESTAGIARIO"):
             salario = 0
         elif (capacitacao == "FORMADO"):
             salario = (130.25*cargaHoraria)
@@ -62,7 +62,7 @@ def defineSalario(areaAtuacao, capacitacao, cargaHoraria):
         return salario
     
     else:
-        if(capacitacao == "ESTAGIÁRIO"):
+        if(capacitacao == "ESTAGIARIO"):
             salario = 0
         elif (capacitacao == "FORMADO"):
             salario = (100.25*cargaHoraria)

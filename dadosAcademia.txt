@@ -1,3 +1,0 @@
-
-ALUNO: ERIC FELIX PINTO | idade: 19 | peso: 62 | altura: 180 | sexo: MASCULINO | plano: TRIMESTRAL
-ALUNO: ERIC FELIX PINTO | idade: 19 | peso: 62 | altura: 180 | sexo: MASCULINO | plano: TRIMESTRAL
