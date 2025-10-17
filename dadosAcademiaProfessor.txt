@@ -1,3 +1,1 @@
-
-
 professor: JORGE | CPF: 474 | Atuacao: DANCA | Capacitacao: DOUTORADO | Turno de Trabalho: NOITE | Carga Horaria: 20 | Salario: 3605.0
