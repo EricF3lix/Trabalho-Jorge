@@ -78,3 +78,42 @@ def calcula_idade(idade):
     hoje = date.today()
     idade = hoje.year - nascimento.year - ((hoje.month, hoje.day) < (nascimento.month, nascimento.day))
     return idade
+
+
+def imprimeUsuario(dadosAlunos, dadosProfessor, usuario, nome):
+    if usuario == "ALUNO":
+        print(f"nome : {nome}")
+        for chave, valor in dadosAlunos[nome].items():
+            print(f"{chave} : {valor}")
+    elif usuario == "PROFESSOR":
+        print(f"nome : {nome}")
+        for chave, valor in dadosProfessor[nome].items():
+            print(f"{chave} : {valor}")
+
+
+
+def atualizaDados(dadosAlunos, dadosProfessor, usuario, nome):
+    if usuario=="ALUNO":
+        print(f"Dados atuais do {usuario}:")
+        print(f"Nome: {nome}")
+        for chave, valor in dadosAlunos[nome].items():
+            print(f"{chave}: {valor}")
+        campo = input("Qual campo você deseja atualizar? ").lower()
+        if campo in dadosAlunos[nome]:  
+            novo_valor = input(f"Informe o novo valor para {campo}: ")
+            dadosAlunos[nome][campo] = novo_valor  
+            print(f"{campo} atualizado com sucesso para {novo_valor}!")
+        else:
+            print("Campo não encontrado nos dados do aluno.")
+    else:
+        print(f"Dados atuais do {usuario}:")
+        print(f"Nome: {nome}")
+        for chave, valor in dadosProfessor[nome].items():
+            print(f"{chave}: {valor}")
+        campo = input("Qual campo você deseja atualizar? ").lower()
+        if campo in dadosProfessor[nome]:  
+            novo_valor = input(f"Informe o novo valor para {campo}: ")
+            dadosProfessor[nome][campo] = novo_valor  
+            print(f"{campo} atualizado com sucesso para {novo_valor}!")
+        else:
+            print("Campo não encontrado nos dados do aluno.")
