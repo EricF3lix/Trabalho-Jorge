@@ -1,5 +1,7 @@
-import CRUD 
-from logger import lerArquivoAluno, lerArquivoProfessor
+from CRUD import create, read, update, delete 
+from logger import lerArquivoAluno, lerArquivoProfessor, salvarAlunoNoArquivo, salvarProfessorNoArquivo
+from OperacaoMatematica import defineSalario, calcula_idade
+
 
 dadosAlunos = {}
 dadosProfessor = {} 
@@ -15,8 +17,10 @@ def validaEscolha(escolha, opcoes):
         escolha = int(escolha)  
         return escolha
     
-        
-        
+
+
+
+
 def imprimeUsuario(dadosAlunos, dadosProfessor, usuario, nome):
     if usuario == "ALUNO":
         print(f"nome : {nome}")
@@ -26,6 +30,8 @@ def imprimeUsuario(dadosAlunos, dadosProfessor, usuario, nome):
         print(f"nome : {nome}")
         for chave, valor in dadosProfessor[nome].items():
             print(f"{chave} : {valor}")
+
+
 
 def atualizaDados(dadosAlunos, dadosProfessor, usuario, nome):
     if usuario=="ALUNO":
@@ -55,7 +61,16 @@ def atualizaDados(dadosAlunos, dadosProfessor, usuario, nome):
 
 
 
-def menu(dadosAlunos, dadosProfessor):
+def escolheAlunoOuProfessor():
+    usuario = input("Informe se é ALUNO ou PROFESSOR: ").upper()
+    opcoesUsuario = ["ALUNO", "PROFESSOR"]
+    usuario = validaEscolha(usuario, opcoesUsuario)
+    nome = input(f"Informe o nome do {usuario} que deseja ver os dados: ").upper()
+    return usuario, nome
+
+
+
+def menuInicial(dadosAlunos, dadosProfessor):
     programa = 1
     while programa == 1:
         print("Seja bem vindo ao sistema da F3 Fitness. Digite:")
@@ -65,11 +80,10 @@ def menu(dadosAlunos, dadosProfessor):
         print("4 - Remover usuário do sistema")
         print("5 - Ver todos os produtos fornecidos pela F3 Fitness")
         print("0 - Fechar programa")
-        escolha = int(input("Escolha o que você deseja fazer: "))
+        escolha = input("Escolha o que você deseja fazer: ")
         opcoes = ["0", "1", "2", "3", "4", "5"]
         escolha = validaEscolha(escolha, opcoes)
-        print("\n")
-           
+
         if escolha == 0:
             print("Programa encerrado")
             programa = 0
@@ -78,28 +92,30 @@ def menu(dadosAlunos, dadosProfessor):
         elif escolha == 1:
             print("1 - Cadastrar ALUNO")
             print("2 - Cadastrar PROFESSOR")
-            cadastro = input("escolha uma das opções: ")
+            escolha = input("escolha uma das opções: ")
             opcoesCadastro = ["1", "2"]
-            cadastro = validaEscolha(cadastro, opcoesCadastro, cadastro)
-            dadosAlunos, dadosProfessor = CRUD.create(dadosAlunos, dadosProfessor, cadastro)
-        
+            escolha = validaEscolha(escolha, opcoesCadastro)
+            dadosAlunos, dadosProfessor = create(dadosAlunos, dadosProfessor, escolha)
+                
         elif escolha == 2:
-            usuario = input("Informe se é ALUNO ou PROFESSOR: ").upper()
-            opcoesUsuario = ["ALUNO", "PROFESSOR"]
-            usuario = validaEscolha(usuario, opcoesUsuario)
-            nome = input(f"Informe o nome do {usuario} que deseja ver os dados: ").upper()
-            CRUD.read(dadosAlunos, dadosProfessor, usuario, nome)
+            usuario, nome = escolheAlunoOuProfessor()
+                    
+            resultado = read(dadosAlunos, dadosProfessor, usuario, nome)
+            if resultado == 0:
+                print("Não foi possivel encontrar o usuário.")
 
         elif escolha == 3:
-            usuario = input("Informe se é ALUNO ou PROFESSOR: ").upper()
-            opcoesUsuario = ["ALUNO", "PROFESSOR"]
-            usuario = validaEscolha(usuario, opcoesUsuario)
-            nome = input(f"Informe o nome do {usuario} que deseja ver os dados: ").upper()
-            CRUD.update(dadosAlunos, dadosProfessor, usuario, nome)
+            usuario, nome = escolheAlunoOuProfessor()
+            dadosAlunos, dadosProfessor, resultado = update(dadosAlunos, dadosProfessor, usuario, nome)
+            if resultado == 0:
+                print("Não foi possivel encontrar o usuário")
                 
         elif escolha == 4:
-            CRUD.delete(dadosAlunos, dadosProfessor)
-            
+            usuario, nome = escolheAlunoOuProfessor()
+            dadosAlunos, dadosProfessor, resultado = delete(dadosAlunos, dadosProfessor, usuario, nome)
+            if resultado == 0:
+                print("Não foi possível encontrar o usuário.")    
+        
         elif escolha == 5:
             print("Os nossos produtos com os respectivos valores são:")   
             print("Plano MENSAL - R$ 90.00") 
@@ -107,13 +123,17 @@ def menu(dadosAlunos, dadosProfessor):
             print("Plano SEMESTRAL - R$ 500.00")
             print("Plano ANUAL - R$ 950.00")
             print("\n")        
-        else:
-            escolha = int(input("Entrada inválida. Tente novamente: "))
+
+
+    
+
 
 dadosAlunos = lerArquivoAluno(dadosAlunos)
 dadosProfessor = lerArquivoProfessor(dadosProfessor)
 
-dadosAlunos, dadosProfessor = menu(dadosAlunos, dadosProfessor)
+dadosAlunos, dadosProfessor = menuInicial(dadosAlunos, dadosProfessor)
+salvarAlunoNoArquivo(dadosAlunos)
+salvarProfessorNoArquivo(dadosProfessor)
 
 
 

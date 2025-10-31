@@ -1,5 +1,5 @@
-from Cadastros import menuAluno, menuProfessor 
 from interfaceUsuario import imprimeUsuario, atualizaDados
+from OperacaoMatematica import menuAluno, menuProfessor
 
 
 def create(dadosAlunos, dadosProfessor, escolha):
@@ -17,14 +17,7 @@ def read(dadosAlunos, dadosProfessor, usuario, nome):
     else:
         return 0
 
-      
-   
         
-        
-        
-    
-    
-    
        
 def update(dadosAlunos, dadosProfessor, usuario, nome):
     if nome in dadosAlunos or nome in dadosProfessor:
@@ -37,33 +30,19 @@ def update(dadosAlunos, dadosProfessor, usuario, nome):
     
        
     
-def delete(dadosAlunos, dadosProfessor):
-    usuario = input("Informe se é ALUNO ou PROFESSOR: ").upper()
+def delete(dadosAlunos, dadosProfessor, usuario, nome):
     if usuario == "ALUNO":
-        nome = input("Informe o nome do aluno que deseja deletar: ").upper()
         if nome in dadosAlunos:
-            confirmacao = input(f"Tem certeza que deseja deletar o aluno {nome}? [s/n]: ").lower()
-            if confirmacao == 's':
-                del dadosAlunos[nome]  
-                print(f"Aluno {nome} deletado com sucesso!")
-            else:
-                print("Deleção cancelada.")
+            del dadosAlunos[nome]
+            return dadosAlunos, dadosProfessor, 1
         else:
-            print("Aluno não encontrado.")       
+            return dadosAlunos, dadosProfessor, 0
     elif usuario == "PROFESSOR":
-        nome = input("Informe o nome do professor que deseja deletar: ").upper()
         if nome in dadosProfessor:
-            confirmacao = input(f"Tem certeza que deseja deletar o professor {nome}? (s/n): ").lower()
-            if confirmacao == 's':
-                del dadosProfessor[nome] 
-                print(f"Professor {nome} deletado com sucesso!")
-            else:
-                print("Deleção cancelada.")
+            del dadosProfessor[nome]
+            return dadosAlunos, dadosProfessor, 1
         else:
-            print("Professor não encontrado.")
-    else:
-        print("Entrada inválida. Tente novamente.")
-    return dadosAlunos, dadosProfessor  
+            return dadosAlunos, dadosProfessor, 0
 
     
     
