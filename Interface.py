@@ -1,7 +1,7 @@
 from CRUD import create, read, update, delete 
 from logger import lerArquivoAluno, lerArquivoProfessor, salvarAlunoNoArquivo, salvarProfessorNoArquivo
 from OperacaoMatematica import calcula_idade, defineSalario
-from datetime import date, datetime
+from datetime import date
 
 dadosAlunos = {}
 dadosProfessor = {} 
@@ -9,7 +9,7 @@ dadosProfessor = {}
 
 def validaEscolha(escolha, opcoes):
     while escolha not in opcoes:
-        escolha = input("Entrada inválida. Tente novamente: ")
+        escolha = input("Entrada inválida. Tente novamente: ").upper()
     
     if escolha.isdigit():   
         escolha = int(escolha)  
@@ -27,7 +27,7 @@ def validaEntradaUsuario(tipo, entrada):
             if entrada.isdigit() or entrada =="":
                 entrada = input("Entrada inválida. Tente novamente: ").upper()
             else:
-                return entrada.upper()
+                return entrada
         elif tipo == "int":
             if entrada.isdigit():
                 entrada = int(entrada)
@@ -54,16 +54,6 @@ def validaEntradaUsuario(tipo, entrada):
                 else:
                     entrada = input("Entrada inválida. Tente novamente: ")
         
-        elif tipo == "float":
-            auxiliar = entrada.split(".")
-            if len(auxiliar == 2):
-                entrada = float(entrada)
-                return entrada
-            else:
-                entrada = input("Entrada inválida. Tente novamente: ")
-        
-
-
                 
 
 
@@ -135,7 +125,7 @@ def menuInicial(dadosAlunos, dadosProfessor):
                 sexo = validaEscolha(sexo, opcoesValidas)
                 
                 imc = input("Informe seu IMC em porcentagem: ")
-                imc = validaEntradaUsuario("float", imc)
+                imc = validaEntradaUsuario("int", imc)
                 
                 plano = input("Informe o plano que o aluno deseja (mensal, trimestral, semestral ou anual): ").upper()
                 opcoesValidas = ["MENSAL", "TRIMESTRAL", "SEMESTRAL", "ANUAL"]
@@ -160,12 +150,15 @@ def menuInicial(dadosAlunos, dadosProfessor):
                 turnoTrabalho = input("Informe o turno que o professor irá trabalhar (manha, tarde ou noite): ").upper()
                 opcoesValidas = ["MANHA", "TARDE", "NOITE"]
                 turnoTrabalho = validaEscolha(turnoTrabalho, opcoesValidas)
+                
                 cargaHoraria = input("Informe a carga horária semanal do professor: ")
                 cargaHoraria = validaEntradaUsuario("int", cargaHoraria)
+                
                 salario = defineSalario(areaAtuacao, capacitacao, cargaHoraria)
                 dadosAlunos, dadosProfessor = create(dadosAlunos, dadosProfessor, cadastro,  nome, cpf, areaAtuacao, capacitacao, turnoTrabalho, cargaHoraria, salario)
         
         elif escolha == 2:
+            
             usuario, nome = escolheAlunoOuProfessor(usuario, nome)    
             resultado = read(dadosAlunos, dadosProfessor, usuario, nome)
             if resultado == 1:

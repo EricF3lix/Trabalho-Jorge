@@ -1,4 +1,3 @@
-import pytest
 from CRUD import create, read, update, delete
 
 
