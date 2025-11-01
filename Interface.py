@@ -1,6 +1,7 @@
 from CRUD import create, read, update, delete 
 from logger import lerArquivoAluno, lerArquivoProfessor, salvarAlunoNoArquivo, salvarProfessorNoArquivo
 from OperacaoMatematica import calcula_idade, defineSalario
+from datetime import date, datetime
 
 dadosAlunos = {}
 dadosProfessor = {} 
@@ -10,11 +11,62 @@ def validaEscolha(escolha, opcoes):
     while escolha not in opcoes:
         escolha = input("Entrada inválida. Tente novamente: ")
     
-    if escolha == "ALUNO" or escolha == "PROFESSOR":
-        return escolha
-    else:   
+    if escolha.isdigit():   
         escolha = int(escolha)  
         return escolha
+    else:
+        return escolha
+    
+    
+
+def validaEntradaUsuario(tipo, entrada):
+    repeticao = 1
+    while repeticao == 1:
+        entrada.strip()
+        if tipo == "str":
+            if entrada.isdigit() or entrada =="":
+                entrada = input("Entrada inválida. Tente novamente: ").upper()
+            else:
+                return entrada.upper()
+        elif tipo == "int":
+            if entrada.isdigit():
+                entrada = int(entrada)
+                return entrada
+            else:
+                entrada = input("Entrada inválida. Tente novamente: ")
+        
+        elif tipo == "data":
+            if entrada.isdigit():
+                entrada = input("Entrada inválida. Tente novamente: ")
+            else:
+                auxiliar = entrada.split("/")
+                hoje = date.today()
+                if len(auxiliar) == 3:
+                    dia = int(auxiliar[0])
+                    mes = int(auxiliar[1])
+                    ano = int(auxiliar[2])
+                    if (dia >=1 and dia <=31) and (mes>=1 and mes<=12) and ano >= 1900 and ano <= hoje.year:
+                        if dia == hoje.day and mes == hoje.month:
+                            print("FELIZ ANIVERSÁRIO")
+                        return entrada
+                    else:
+                        entrada = input("Entrada inválida. Tente novamente: ")
+                else:
+                    entrada = input("Entrada inválida. Tente novamente: ")
+        
+        elif tipo == "float":
+            auxiliar = entrada.split(".")
+            if len(auxiliar == 2):
+                entrada = float(entrada)
+                return entrada
+            else:
+                entrada = input("Entrada inválida. Tente novamente: ")
+        
+
+
+                
+
+
     
 def imprimeUsuario(dadosAlunos, dadosProfessor, usuario, nome):
     if usuario == "ALUNO":
@@ -66,27 +118,53 @@ def menuInicial(dadosAlunos, dadosProfessor):
             if cadastro == 1:
                 print("Vamos começar a cadastrar o Aluno.")
                 nome = input("Informe o nome completo do aluno: ").upper()
+                nome = validaEntradaUsuario("str", nome)
+                
                 idade = input("Informe a data de nascimento no formato dd/mm/aaaa: ")
+                idade = validaEntradaUsuario("data", idade)
                 idade = calcula_idade(idade)
-                peso = int(input("Informe o peso do aluno em kg: "))
-                altura = int(input("Informe a altura do aluno em cm: "))
+                
+                peso = input("Informe o peso do aluno em kg: ")
+                peso = validaEntradaUsuario("int", peso)
+                
+                altura = input("Informe a altura do aluno em cm: ")
+                altura = validaEntradaUsuario("int", altura)
+
                 sexo = input("Informe se é do sexo masculino ou feminino: ").upper()
-                imc = float (input("Informe seu IMC em porcentagem: "))
+                opcoesValidas = ["MASCULINO", "FEMININO"]
+                sexo = validaEscolha(sexo, opcoesValidas)
+                
+                imc = input("Informe seu IMC em porcentagem: ")
+                imc = validaEntradaUsuario("float", imc)
+                
                 plano = input("Informe o plano que o aluno deseja (mensal, trimestral, semestral ou anual): ").upper()
+                opcoesValidas = ["MENSAL", "TRIMESTRAL", "SEMESTRAL", "ANUAL"]
+                plano = validaEscolha(plano, opcoesValidas)
+                
                 dadosAlunos, dadosProfessor = create(dadosAlunos, dadosProfessor, cadastro, nome, idade, peso, altura, sexo, imc, plano)
-            
             else:
                 print("Vamos começar a cadastrar o Professor")
                 nome = input("Informe o nome completo do professor: ").upper()
-                cpf = int(input("Informe o CPF do professor (somente digitos): "))
-                areaAtuacao = input("Informe a área de atuação do professor (danca, boxe, funcional ou musculacao): ").upper()
-                capacitacao = input("Informe a capacitação profissional do professor: (estagiario, formado, pos graduacao, mestrado ou doutorado)").upper()
-                turnoTrabalho = input("Informe o turno que o professor irá trabalhar (manhã, tarde ou noite): ").upper()
-                cargaHoraria = int(input("Informe a carga horária semanal do professor: "))
-                salario = defineSalario(areaAtuacao, capacitacao, cargaHoraria)
-    
-                dadosAlunos, dadosProfessor = create(dadosAlunos, dadosProfessor, cadastro,  nome, cpf, areaAtuacao, capacitacao, turnoTrabalho, cargaHoraria, salario)
+                nome = validaEntradaUsuario("str", nome)
+                cpf = input("Informe o CPF do professor (somente digitos): ")
+                cpf = validaEntradaUsuario("int", cpf)
                 
+                areaAtuacao = input("Informe a área de atuação do professor (danca, boxe, funcional ou musculacao): ").upper()
+                opcoesValidas = ["DANCA", "BOXE", "FUNCIONAL", "MUSCULACAO"]
+                areaAtuacao = validaEscolha (areaAtuacao, opcoesValidas)
+                
+                capacitacao = input("Informe a capacitação profissional do professor: (estagiario, formado, pos graduacao, mestrado ou doutorado)").upper()
+                opcoesValidas = ["ESTAGIARIO", "FORMADO", "POS GRADUACAO", "MESTRADO", "DOUTORADO"]
+                capacitacao = validaEscolha (capacitacao, opcoesValidas)
+                
+                turnoTrabalho = input("Informe o turno que o professor irá trabalhar (manha, tarde ou noite): ").upper()
+                opcoesValidas = ["MANHA", "TARDE", "NOITE"]
+                turnoTrabalho = validaEscolha(turnoTrabalho, opcoesValidas)
+                cargaHoraria = input("Informe a carga horária semanal do professor: ")
+                cargaHoraria = validaEntradaUsuario("int", cargaHoraria)
+                salario = defineSalario(areaAtuacao, capacitacao, cargaHoraria)
+                dadosAlunos, dadosProfessor = create(dadosAlunos, dadosProfessor, cadastro,  nome, cpf, areaAtuacao, capacitacao, turnoTrabalho, cargaHoraria, salario)
+        
         elif escolha == 2:
             usuario, nome = escolheAlunoOuProfessor(usuario, nome)    
             resultado = read(dadosAlunos, dadosProfessor, usuario, nome)
@@ -128,7 +206,7 @@ def menuInicial(dadosAlunos, dadosProfessor):
                             novoValor = int(novoValor)
                         elif campo == salario:
                             novoValor = float(novoValor)
-                        dadosAlunos, dadosProfessor = update(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor)
+                        dadosAlunos, dadosProfessor = update(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor)                
                     else:
                         print("Campo não encontrado")
                 else:
