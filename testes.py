@@ -1,4 +1,4 @@
-from CRUD import create, read, update, delete
+from CRUD import read, update
 
 
 def validaCreate(dadosAlunos, dadosProfessor, escolha, nome):

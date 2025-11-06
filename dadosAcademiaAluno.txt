@@ -1,5 +1,5 @@
-aluno: ERIC | idade: 19 | peso: 62 | altura: 180 | sexo: MASCULINO | plano: MENSAL
-aluno: BRUNO | idade: 22 | peso: 75 | altura: 175 | sexo: MASCULINO | plano: ANUAL
-aluno: LARA | idade: 15 | peso: 65 | altura: 170 | sexo: FEMININO | plano: TRIMESTRAL
-aluno: VIVIANE | idade: 48 | peso: 80 | altura: 157 | sexo: FEMININO | plano: MENSAL
-aluno: JUNIOR | idade: 51 | peso: 80 | altura: 175 | sexo: MASCULINO | plano: SEMESTRAL
+aluno: ERIC | idade: 19 | peso: 65 | altura: 170 | sexo: MASCULINO | imc: 12.0 | plano: MENSAL
+aluno: JOCA | idade: 20 | peso: 100 | altura: 169 | sexo: MASCULINO | imc: 15.0 | plano: ANUAL
+aluno: MATEUS | idade: 19 | peso: 81 | altura: 175 | sexo: MASCULINO | imc: 14.0 | plano: TRIMESTRAL
+aluno: BRENO | idade: 5 | peso: 50 | altura: 160 | sexo: MASCULINO | imc: 19.0 | plano: MENSAL
+aluno: HUGO | idade: 23 | peso: 80 | altura: 1800 | sexo: MASCULINO | imc: 12.0 | plano: MENSAL
