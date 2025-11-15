@@ -1,4 +1,10 @@
-from CRUD import read, update
+from CRUD import read
+from logger import lerArquivoAluno, lerArquivoProfessor
+
+dadosAlunos = {}
+dadosProfessor = {}
+dadosAlunos = lerArquivoAluno(dadosAlunos)
+dadosProfessor = lerArquivoProfessor(dadosProfessor)
 
 
 def validaCreate(dadosAlunos, dadosProfessor, escolha, nome):
@@ -26,14 +32,14 @@ def validaDelete(dadosAlunos, dadosProfessor, usuario, nome):
             print("Função funcionando perfeitamente para Alunos")
             return 1
         else:
-            print("Houve algum problema em cadastrar um novo Aluno")
+            print("Houve algum problema em deletar um novo Aluno")
             return 0
     else: 
         if nome  not in dadosProfessor:
             print("Função funcionando perfeitamente para Professores")
             return 1
         else:
-            print("Houve algum problema em cadastrar um novo Professor")
+            print("Houve algum problema em deletar um novo Professor")
             return 0
 
 
@@ -41,7 +47,6 @@ def validaDelete(dadosAlunos, dadosProfessor, usuario, nome):
 
 def validaRead(dadosAlunos, dadosProfessor, usuario, nome):
     resultado = read(dadosAlunos, dadosProfessor, usuario, nome)
-    
     if usuario.upper() == "ALUNO":
         if resultado == 1 and nome in dadosAlunos:
             print(f"Função read funcionando corretamente para o aluno '{nome}'")
@@ -73,7 +78,6 @@ def validaRead(dadosAlunos, dadosProfessor, usuario, nome):
 
 def validaUpdate(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor):
     if usuario.upper() == "ALUNO":
-        dadosAlunos, dadosProfessor = update(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor)
         if dadosAlunos[nome][campo] == novoValor:
             print("Função funcionando perfeitamente para atualizar dados do aluno")
             return 1
@@ -82,7 +86,6 @@ def validaUpdate(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor):
             return 0
 
     elif usuario.upper() == "PROFESSOR":
-        dadosAlunos, dadosProfessor = update(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor)
         if dadosProfessor[nome][campo] == novoValor:
             print("Função funcionando perfeitamente para atualizar dados do professor")
             return 1
@@ -92,6 +95,15 @@ def validaUpdate(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor):
 
 
 
-        
+
+validaCreate(dadosAlunos, dadosProfessor, 1, "ERIC")
+validaUpdate(dadosAlunos, dadosProfessor, "ALUNO", "ERIC", "sexo", "MASCULINO")
+validaRead(dadosAlunos, dadosProfessor, "ALUNO", "ERIC")
+validaDelete(dadosAlunos, dadosProfessor, "ALUNO", "mateus")
+
+
+
+
+
         
 
