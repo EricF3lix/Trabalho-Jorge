@@ -1,24 +1,24 @@
 from logger import salvarAlunoNoArquivo, salvarProfessorNoArquivo
 
-def create(dadosAlunos, dadosProfessor, escolha, variavel1, variavel2, variavel3, variavel4, variavel5, variavel6, variavel7):
-    if escolha == 1:
-        dadosAlunos[variavel1] = {
-        "idade" : variavel2,
-        "peso" : variavel3,
-        "altura" : variavel4,
-        "sexo" : variavel5,
-        "imc" : variavel6,
-        "plano" : variavel7
+def create(dadosAlunos, dadosProfessor, usuario, nome, caracteristicas2, caracteristicas3, caracteristicas4, caracteristicas5, caracteristicas6, caracteristicas7):
+    if usuario == "ALUNO":
+        dadosAlunos[nome] = {
+        "idade" : caracteristicas2,
+        "peso" : caracteristicas3,
+        "altura" : caracteristicas4,
+        "sexo" : caracteristicas5,
+        "imc" : caracteristicas6,
+        "plano" : caracteristicas7
         }
         salvarAlunoNoArquivo(dadosAlunos)
     else:
-        dadosProfessor[variavel1] = {
-            "cpf" : variavel2,
-            "atuacao" : variavel3,
-            "capacitacao": variavel4,
-            "turno de trabalho": variavel5,
-            "carga horaria" : variavel6,
-            "salario" : variavel7 
+        dadosProfessor[nome] = {
+            "cpf" : caracteristicas2,
+            "atuacao" : caracteristicas3,
+            "capacitacao": caracteristicas4,
+            "turno de trabalho": caracteristicas5,
+            "carga horaria" : caracteristicas6,
+            "salario" : caracteristicas7 
         }
         salvarProfessorNoArquivo(dadosProfessor)
    

@@ -99,13 +99,11 @@ def menuInicial(dadosAlunos, dadosProfessor):
             return dadosAlunos, dadosProfessor
         
         elif escolha == 1:
-            print("1 - Cadastrar ALUNO")
-            print("2 - Cadastrar PROFESSOR")
-            cadastro = input("escolha uma das opções: ")
-            opcoesCadastro = ["1", "2"]
-            cadastro = validaEscolha(cadastro, opcoesCadastro)
+            usuario = input("Informe se é ALUNO ou PROFESSOR: ").upper()
+            opcoesUsuario = ["ALUNO", "PROFESSOR"]
+            usuario = validaEscolha(usuario, opcoesUsuario)
             
-            if cadastro == 1:
+            if usuario == "ALUNO":
                 print("Vamos começar a cadastrar o Aluno.")
                 nome = input("Informe o nome completo do aluno: ").upper()
                 nome = validaEntradaUsuario("str", nome)
@@ -131,7 +129,7 @@ def menuInicial(dadosAlunos, dadosProfessor):
                 opcoesValidas = ["MENSAL", "TRIMESTRAL", "SEMESTRAL", "ANUAL"]
                 plano = validaEscolha(plano, opcoesValidas)
                 
-                dadosAlunos, dadosProfessor = create(dadosAlunos, dadosProfessor, cadastro, nome, idade, peso, altura, sexo, imc, plano)
+                dadosAlunos, dadosProfessor = create(dadosAlunos, dadosProfessor, usuario, nome, idade, peso, altura, sexo, imc, plano)
             else:
                 print("Vamos começar a cadastrar o Professor")
                 nome = input("Informe o nome completo do professor: ").upper()
@@ -155,7 +153,7 @@ def menuInicial(dadosAlunos, dadosProfessor):
                 cargaHoraria = validaEntradaUsuario("int", cargaHoraria)
                 
                 salario = defineSalario(areaAtuacao, capacitacao, cargaHoraria)
-                dadosAlunos, dadosProfessor = create(dadosAlunos, dadosProfessor, cadastro,  nome, cpf, areaAtuacao, capacitacao, turnoTrabalho, cargaHoraria, salario)
+                dadosAlunos, dadosProfessor = create(dadosAlunos, dadosProfessor, usuario,  nome, cpf, areaAtuacao, capacitacao, turnoTrabalho, cargaHoraria, salario)
         
         elif escolha == 2:
             

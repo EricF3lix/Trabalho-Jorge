@@ -7,8 +7,8 @@ dadosAlunos = lerArquivoAluno(dadosAlunos)
 dadosProfessor = lerArquivoProfessor(dadosProfessor)
 
 
-def validaCreate(dadosAlunos, dadosProfessor, escolha, nome):
-    if escolha == 1:  
+def validaCreate(dadosAlunos, dadosProfessor, usuario, nome):
+    if usuario.upper() == "ALUNO":  
         if nome in dadosAlunos:
             print("Função funcionando perfeitamente para Alunos")
             return 1
@@ -96,7 +96,7 @@ def validaUpdate(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor):
 
 
 
-validaCreate(dadosAlunos, dadosProfessor, 1, "ERIC")
+validaCreate(dadosAlunos, dadosProfessor, "ALUNO", "ERIC")
 validaUpdate(dadosAlunos, dadosProfessor, "ALUNO", "ERIC", "sexo", "MASCULINO")
 validaRead(dadosAlunos, dadosProfessor, "ALUNO", "ERIC")
 validaDelete(dadosAlunos, dadosProfessor, "ALUNO", "mateus")

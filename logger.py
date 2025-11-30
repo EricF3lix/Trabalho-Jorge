@@ -1,5 +1,5 @@
-LOG_FILE = 'dadosAcademiaAluno.txt'
-LOG2_FILE = 'dadosAcademiaProfessor.txt'
+LOG_FILE = "dadosAcademiaAluno.txt"
+LOG2_FILE = "dadosAcademiaProfessor.txt"
 
 def salvarAlunoNoArquivo(dadosAlunos):
     with open(LOG_FILE, 'w') as arquivo:

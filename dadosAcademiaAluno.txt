@@ -3,3 +3,5 @@ aluno: JOCA | idade: 20 | peso: 100 | altura: 169 | sexo: MASCULINO | imc: 15.0 
 aluno: MATEUS | idade: 19 | peso: 81 | altura: 175 | sexo: MASCULINO | imc: 14.0 | plano: TRIMESTRAL
 aluno: BRENO | idade: 5 | peso: 50 | altura: 160 | sexo: MASCULINO | imc: 19.0 | plano: MENSAL
 aluno: HUGO | idade: 23 | peso: 80 | altura: 1800 | sexo: MASCULINO | imc: 12.0 | plano: MENSAL
+aluno: RODOLFO | idade: 19 | peso: 70 | altura: 150 | sexo: MASCULINO | imc: 14 | plano: MENSAL
+
