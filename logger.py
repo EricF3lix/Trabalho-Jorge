@@ -63,3 +63,4 @@ def lerArquivoProfessor(dadosProfessor):
 
     return dadosProfessor
 
+#finalizado

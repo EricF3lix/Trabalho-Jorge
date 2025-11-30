@@ -230,3 +230,5 @@ dadosProfessor = lerArquivoProfessor(dadosProfessor)
 dadosAlunos, dadosProfessor = menuInicial(dadosAlunos, dadosProfessor)
 salvarAlunoNoArquivo(dadosAlunos)
 salvarProfessorNoArquivo(dadosProfessor)
+
+#finalizado

@@ -96,12 +96,12 @@ def validaUpdate(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor):
 
 
 
-validaCreate(dadosAlunos, dadosProfessor, 1, "LAISY")
+validaCreate(dadosAlunos, dadosProfessor, 1, "ERIC")
 validaUpdate(dadosAlunos, dadosProfessor, "ALUNO", "ERIC", "sexo", "MASCULINO")
 validaRead(dadosAlunos, dadosProfessor, "ALUNO", "ERIC")
 validaDelete(dadosAlunos, dadosProfessor, "ALUNO", "mateus")
 
-
+#finalizado
 
 
 

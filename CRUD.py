@@ -62,6 +62,5 @@ def delete(dadosAlunos, dadosProfessor, usuario, nome):
         else:
             return dadosAlunos, dadosProfessor, 0
 
-    
-    
+#finalizado
  

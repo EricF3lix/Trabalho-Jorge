@@ -30,6 +30,6 @@ def calcula_idade(idade):
     idade = hoje.year - nascimento.year - ((hoje.month, hoje.day) < (nascimento.month, nascimento.day))
     return idade
 
-
+#finalizado
 
 
