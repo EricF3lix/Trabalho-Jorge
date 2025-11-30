@@ -26,8 +26,18 @@ def create(dadosAlunos, dadosProfessor, usuario, nome, caracteristicas2, caracte
         
       
 def read(dadosAlunos, dadosProfessor, usuario, nome):
-    if (nome in dadosAlunos) or (nome in dadosProfessor):
-        return 1  
+    
+    if usuario == "ALUNO":
+        if nome in dadosAlunos:
+            return 1
+        else:
+            return 0 
+    
+    elif usuario == "PROFESSOR":
+        if nome in dadosProfessor:
+            return 1
+        else:
+            return 0
     else:
         return 0
 
