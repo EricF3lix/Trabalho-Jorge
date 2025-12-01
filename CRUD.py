@@ -16,7 +16,7 @@ def create(dadosAlunos, dadosProfessor, usuario, nome, caracteristicas2, caracte
             "cpf" : caracteristicas2,
             "atuacao" : caracteristicas3,
             "capacitacao": caracteristicas4,
-            "turno de trabalho": caracteristicas5,
+            "turno": caracteristicas5,
             "carga horaria" : caracteristicas6,
             "salario" : caracteristicas7 
         }
@@ -46,11 +46,17 @@ def read(dadosAlunos, dadosProfessor, usuario, nome):
 def update(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor):
     if usuario == "ALUNO":
         dadosAlunos[nome][campo] = novoValor
+        resultado = 1
         salvarAlunoNoArquivo(dadosAlunos)
-    else:
+        return dadosAlunos, dadosProfessor, resultado
+    elif usuario == "PROFESSOR":
         dadosProfessor[nome][campo] = novoValor
+        resultado = 1   
         salvarProfessorNoArquivo(dadosProfessor)
-    return dadosAlunos, dadosProfessor
+        return dadosAlunos, dadosProfessor, resultado
+    
+    return dadosAlunos, dadosProfessor, 0
+    
     
     
     

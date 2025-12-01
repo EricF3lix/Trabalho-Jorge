@@ -178,7 +178,11 @@ def menuInicial(dadosAlunos, dadosProfessor):
                         novoValor = input(f"Informe o novo valor para {campo}: ")
                         if campo == "idade" or campo == "peso" or campo == "altura" or campo == "imc":
                             novoValor = int(novoValor)
-                        dadosAlunos, dadosProfessor = update(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor)
+                        dadosAlunos, dadosProfessor, resultado = update(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor)
+                        if resultado == 1:
+                            print("Dados atualizados com sucesso.")
+                        else:
+                            print("Houve algum problema ao atualizar os dados.")
                     else:
                         print("Campo não encontrado")
                 else:
@@ -197,7 +201,11 @@ def menuInicial(dadosAlunos, dadosProfessor):
                             novoValor = int(novoValor)
                         elif campo == salario:
                             novoValor = float(novoValor)
-                        dadosAlunos, dadosProfessor = update(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor)                
+                        dadosAlunos, dadosProfessor, resultado = update(dadosAlunos, dadosProfessor, usuario, nome, campo, novoValor)                
+                        if resultado == 1:
+                            print("Dados atualizados com sucesso.")
+                        else:
+                            print("Houve algum problema ao atualizar os dados.")
                     else:
                         print("Campo não encontrado")
                 else:
